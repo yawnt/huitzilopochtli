@@ -32,6 +32,7 @@
   services.tlp.enable = true;
   services.redshift.enable = true;
   services.yubikey-agent.enable = true;
+  services.gvfs.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -46,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     wget git yubikey-manager yubico-piv-tool firefox-wayland
     jetbrains.idea-ultimate nodejs tmux nodePackages.typescript yarn
+    virt-manager virt-viewer unzip libxml2 libreoffice-fresh
   ];
 
   security.pam.yubico = {
@@ -60,6 +62,9 @@
     jetbrains-mono
   ];
   
+
+  virtualisation.libvirtd.enable = true; 
+
   #programs.ssh.extraConfig = ''
   #  PKCS11Provider ${pkgs.yubico-piv-tool}/lib/libykcs11.so
   #'';
